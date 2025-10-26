@@ -1,0 +1,20 @@
+<nav class="navbar">
+  <div class="nav-brand">
+    <%= link_to "Only Members", root_path %>
+  </div>
+
+  <div class="nav-links">
+    <%= link_to "All Posts", posts_path %>
+
+    <% if user_signed_in? %>
+      <!-- Links shown when user IS signed in -->
+      <span class="user-greeting">Hello, <%= current_user.name %>!</span>
+      <%= link_to "New Post", new_post_path %>
+      <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "btn-logout" %>
+    <% else %>
+      <!-- Links shown when user is NOT signed in -->
+      <%= link_to "Sign Up", new_user_registration_path, class: "btn-signup" %>
+      <%= link_to "Sign In", new_user_session_path, class: "btn-signin" %>
+    <% end %>
+  </div>
+</nav>
